@@ -1,0 +1,115 @@
+{
+  "model_name": "unet_v2",
+  "model_kind": "segmentation",
+  "split": "val",
+  "n_images": 329,
+  "manifest_sha256_16": "e5faa812020fe658",
+  "thresholds_from": "validation split",
+  "image_level": {
+    "surface_crack": {
+      "precision": 0.9090909090909091,
+      "recall": 1.0,
+      "f1": 0.9523809523809523,
+      "support": 290,
+      "tp": 290,
+      "fp": 29,
+      "fn": 0,
+      "tn": 10,
+      "average_precision": 0.9933463773634816
+    },
+    "delamination": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571428571428571,
+      "support": 36,
+      "tp": 36,
+      "fp": 12,
+      "fn": 0,
+      "tn": 281,
+      "average_precision": 0.7288599119452455
+    },
+    "pinhole": {
+      "precision": 0.9743589743589743,
+      "recall": 0.95,
+      "f1": 0.9620253164556962,
+      "support": 80,
+      "tp": 76,
+      "fp": 2,
+      "fn": 4,
+      "tn": 247,
+      "average_precision": 0.9580530800370477
+    },
+    "unclassified": {
+      "precision": 0.21739130434782608,
+      "recall": 0.8333333333333334,
+      "f1": 0.3448275862068966,
+      "support": 12,
+      "tp": 10,
+      "fp": 36,
+      "fn": 2,
+      "tn": 281,
+      "average_precision": 0.3643364255145935
+    }
+  },
+  "image_level_score": "max pixel probability of the class channel",
+  "review_rate": 0.993920972644377,
+  "review_band": 0.15,
+  "errors_flagged_for_review": {
+    "images_with_any_error": 69,
+    "of_which_flagged": 69,
+    "share_flagged": 1.0
+  },
+  "pixel_level": {
+    "surface_crack": {
+      "pixel_precision": 0.7491456266440215,
+      "pixel_recall": 0.756077340443945,
+      "dice": 0.7525955228998612,
+      "iou": 0.603329182086497,
+      "mean_image_dice_gt_present": 0.7435510856201629,
+      "images_gt_present": 290,
+      "images_gt_empty": 39,
+      "empty_fp_rate": 0.7435897435897436
+    },
+    "delamination": {
+      "pixel_precision": 0.8211087795302241,
+      "pixel_recall": 0.8432209987765543,
+      "dice": 0.832017998120623,
+      "iou": 0.7123551534029113,
+      "mean_image_dice_gt_present": 0.8027869271885736,
+      "images_gt_present": 36,
+      "images_gt_empty": 293,
+      "empty_fp_rate": 0.040955631399317405
+    },
+    "pinhole": {
+      "pixel_precision": 0.9182968929804373,
+      "pixel_recall": 0.8665350444225074,
+      "dice": 0.8916653969221393,
+      "iou": 0.8045092108880946,
+      "mean_image_dice_gt_present": 0.8375644813192482,
+      "images_gt_present": 80,
+      "images_gt_empty": 249,
+      "empty_fp_rate": 0.008032128514056224
+    },
+    "unclassified": {
+      "pixel_precision": 0.040883775016830895,
+      "pixel_recall": 0.35774534743606906,
+      "dice": 0.07338139375214556,
+      "iou": 0.03808817869513777,
+      "mean_image_dice_gt_present": 0.47029203943555337,
+      "images_gt_present": 12,
+      "images_gt_empty": 317,
+      "empty_fp_rate": 0.11356466876971609
+    }
+  },
+  "pixel_level_notes": "Evaluated at 640x480. dice/iou/precision/recall sum pixels over all images (empty-GT images included). mean_image_dice_gt_present averages only images where the class is annotated. empty_fp_rate = share of images without the class where any pixel is predicted.",
+  "pinhole_objects": {
+    "gt_objects": 89,
+    "gt_detected": 84,
+    "pred_objects": 89,
+    "pred_true": 84,
+    "object_recall": 0.9438202247191011,
+    "object_precision": 0.9438202247191011,
+    "matching": "3 px tolerance, same as the OpenCV baseline"
+  },
+  "image_level_macro_f1": 0.7790941780466005
+}

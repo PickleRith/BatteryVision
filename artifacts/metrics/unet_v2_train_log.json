@@ -1,0 +1,529 @@
+{
+  "meta": {
+    "model_name": "unet_v2",
+    "architecture": "SmallUNet(base=16), 1,942,628 params, 4 sigmoid output channels",
+    "input_size_wh": [
+      320,
+      240
+    ],
+    "loss": "BCEWithLogits + soft Dice (per channel, batch-level)",
+    "optimizer": "AdamW max_lr=0.0005 wd=1e-4, OneCycle, grad-norm clip=1.0",
+    "epochs": 40,
+    "batch_size": 8,
+    "augmentation": "h/v flips, brightness/contrast jitter",
+    "seed": 42,
+    "device": "cuda",
+    "selected_epoch": 30,
+    "selection_metric": "mean val Dice@0.5 across classes",
+    "pixel_thresholds": {
+      "surface_crack": 0.2,
+      "delamination": 0.4,
+      "pinhole": 0.15,
+      "unclassified": 0.9
+    },
+    "image_thresholds": {
+      "surface_crack": 0.85,
+      "delamination": 0.4,
+      "pinhole": 0.55,
+      "unclassified": 0.9
+    },
+    "threshold_selection": "validation split only (pixel: max dataset Dice; image: max F1 of max-pixel-prob)",
+    "val_dice_at_thresholds": {
+      "surface_crack": 0.7925726850720742,
+      "delamination": 0.8409495082482634,
+      "pinhole": 0.9079986268451768,
+      "unclassified": 0.07409089822363545
+    },
+    "manifest_sha256_16": "e5faa812020fe658",
+    "environment": {
+      "python": "3.11.4",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "opencv": "5.0.0",
+      "numpy": "2.4.6",
+      "platform": "Windows-10-10.0.26200-SP0"
+    }
+  },
+  "log": [
+    {
+      "epoch": 1,
+      "train_loss": 1.7040384188969107,
+      "val_dice@0.5": {
+        "surface_crack": 0.39197004696676524,
+        "delamination": 0.008745822667241011,
+        "pinhole": 0.0010970302501644063,
+        "unclassified": 0.000664378320394738
+      },
+      "val_mean_dice@0.5": 0.10061931955114134,
+      "seconds": 50.654579162597656
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.6371846729540116,
+      "val_dice@0.5": {
+        "surface_crack": 0.4874459195142764,
+        "delamination": 0.008469982734761008,
+        "pinhole": 0.00807127835597028,
+        "unclassified": 0.0005136513542131244
+      },
+      "val_mean_dice@0.5": 0.1261252079898052,
+      "seconds": 62.519474029541016
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.5914854907742755,
+      "val_dice@0.5": {
+        "surface_crack": 0.552283014382947,
+        "delamination": 0.010364551765827682,
+        "pinhole": 0.038881386450596446,
+        "unclassified": 0.006041588297755832
+      },
+      "val_mean_dice@0.5": 0.15189263522428176,
+      "seconds": 66.50933957099915
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.5374789552577564,
+      "val_dice@0.5": {
+        "surface_crack": 0.6463250345939641,
+        "delamination": 0.021869461793779008,
+        "pinhole": 0.07248978742226732,
+        "unclassified": 0.005636965574520608
+      },
+      "val_mean_dice@0.5": 0.18658031234613276,
+      "seconds": 75.35935187339783
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.4560607287738796,
+      "val_dice@0.5": {
+        "surface_crack": 0.6792444549771353,
+        "delamination": 0.09147521569282004,
+        "pinhole": 0.059232566650713664,
+        "unclassified": 0.028603332760694038
+      },
+      "val_mean_dice@0.5": 0.21463889252034074,
+      "seconds": 66.06435203552246
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.3467176754755315,
+      "val_dice@0.5": {
+        "surface_crack": 0.6865293926439691,
+        "delamination": 0.17333092687088783,
+        "pinhole": 0.14913056292366636,
+        "unclassified": 0.04872771334602735
+      },
+      "val_mean_dice@0.5": 0.26442964894613763,
+      "seconds": 74.64961338043213
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.2096799741587076,
+      "val_dice@0.5": {
+        "surface_crack": 0.7272063150632115,
+        "delamination": 0.44832802963117535,
+        "pinhole": 0.005797101449275362,
+        "unclassified": 0.05665945983046776
+      },
+      "val_mean_dice@0.5": 0.30949772649353247,
+      "seconds": 72.0194776058197
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.0653982541076887,
+      "val_dice@0.5": {
+        "surface_crack": 0.7520584297882927,
+        "delamination": 0.5949204544340649,
+        "pinhole": 0.0,
+        "unclassified": 0.05274362509261083
+      },
+      "val_mean_dice@0.5": 0.3499306273287421,
+      "seconds": 76.852778673172
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.9528239431078961,
+      "val_dice@0.5": {
+        "surface_crack": 0.7719813317664616,
+        "delamination": 0.7213853667279,
+        "pinhole": 0.0,
+        "unclassified": 0.04906851964366705
+      },
+      "val_mean_dice@0.5": 0.38560880453450713,
+      "seconds": 116.4696044921875
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.8813122759198464,
+      "val_dice@0.5": {
+        "surface_crack": 0.7653384000661791,
+        "delamination": 0.7892409062189728,
+        "pinhole": 0.0,
+        "unclassified": 0.05050058371953161
+      },
+      "val_mean_dice@0.5": 0.40126997250117086,
+      "seconds": 75.7713303565979
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.8384660245684418,
+      "val_dice@0.5": {
+        "surface_crack": 0.7714921886751472,
+        "delamination": 0.7639659228933264,
+        "pinhole": 0.0,
+        "unclassified": 0.05459774837702359
+      },
+      "val_mean_dice@0.5": 0.39751396498637437,
+      "seconds": 88.63751554489136
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.8134454630633375,
+      "val_dice@0.5": {
+        "surface_crack": 0.7771758844496801,
+        "delamination": 0.7104088402726842,
+        "pinhole": 0.0,
+        "unclassified": 0.04694805194805195
+      },
+      "val_mean_dice@0.5": 0.38363319416760405,
+      "seconds": 82.39594602584839
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.7852158881868458,
+      "val_dice@0.5": {
+        "surface_crack": 0.7663844545832166,
+        "delamination": 0.7827395231197045,
+        "pinhole": 0.0,
+        "unclassified": 0.04671606631948518
+      },
+      "val_mean_dice@0.5": 0.3989600110056016,
+      "seconds": 81.67379593849182
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.7583623765202728,
+      "val_dice@0.5": {
+        "surface_crack": 0.7641863130377339,
+        "delamination": 0.8111129548417684,
+        "pinhole": 0.0,
+        "unclassified": 0.06180923985984381
+      },
+      "val_mean_dice@0.5": 0.40927712693483653,
+      "seconds": 83.83250451087952
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.724180849141322,
+      "val_dice@0.5": {
+        "surface_crack": 0.7745116329018681,
+        "delamination": 0.8029939372770141,
+        "pinhole": 0.0,
+        "unclassified": 0.0583063216940665
+      },
+      "val_mean_dice@0.5": 0.4089529729682372,
+      "seconds": 76.53708291053772
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.6793496769119204,
+      "val_dice@0.5": {
+        "surface_crack": 0.7677462917070718,
+        "delamination": 0.7657397313807359,
+        "pinhole": 0.0,
+        "unclassified": 0.05627264378488026
+      },
+      "val_mean_dice@0.5": 0.39743966671817194,
+      "seconds": 113.81704187393188
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.6172979108960324,
+      "val_dice@0.5": {
+        "surface_crack": 0.7832050905943193,
+        "delamination": 0.8173849293805125,
+        "pinhole": 0.0,
+        "unclassified": 0.05970820425702009
+      },
+      "val_mean_dice@0.5": 0.415074556057963,
+      "seconds": 80.71188235282898
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.595207337497277,
+      "val_dice@0.5": {
+        "surface_crack": 0.7929086743114407,
+        "delamination": 0.8050231196898129,
+        "pinhole": 0.0,
+        "unclassified": 0.061818074296021056
+      },
+      "val_mean_dice@0.5": 0.41493746707431867,
+      "seconds": 77.45155668258667
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.5801762994017361,
+      "val_dice@0.5": {
+        "surface_crack": 0.8058366987200568,
+        "delamination": 0.8123275779790662,
+        "pinhole": 0.0,
+        "unclassified": 0.06096500945920611
+      },
+      "val_mean_dice@0.5": 0.4197823215395822,
+      "seconds": 81.95085120201111
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.5614138417919425,
+      "val_dice@0.5": {
+        "surface_crack": 0.7792927765591758,
+        "delamination": 0.8111803201889201,
+        "pinhole": 0.8723293381969776,
+        "unclassified": 0.06339423688755567
+      },
+      "val_mean_dice@0.5": 0.6315491679581573,
+      "seconds": 73.29514765739441
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.5522056199215054,
+      "val_dice@0.5": {
+        "surface_crack": 0.784201006054659,
+        "delamination": 0.8263192803161228,
+        "pinhole": 0.8160395286963132,
+        "unclassified": 0.06344791162360812
+      },
+      "val_mean_dice@0.5": 0.6225019316726759,
+      "seconds": 76.53461933135986
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.5508928670611758,
+      "val_dice@0.5": {
+        "surface_crack": 0.7792121107122376,
+        "delamination": 0.820435902984047,
+        "pinhole": 0.8796396396396396,
+        "unclassified": 0.0625784175460779
+      },
+      "val_mean_dice@0.5": 0.6354665177205006,
+      "seconds": 73.23581528663635
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.5340442117713248,
+      "val_dice@0.5": {
+        "surface_crack": 0.7730349416051486,
+        "delamination": 0.829969335412182,
+        "pinhole": 0.897618633756301,
+        "unclassified": 0.0641542002301496
+      },
+      "val_mean_dice@0.5": 0.6411942777509453,
+      "seconds": 81.19276285171509
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.5281679063534213,
+      "val_dice@0.5": {
+        "surface_crack": 0.7962734865139145,
+        "delamination": 0.8291377019650383,
+        "pinhole": 0.8846084608460846,
+        "unclassified": 0.06755773955773955
+      },
+      "val_mean_dice@0.5": 0.6443943472206942,
+      "seconds": 77.69993758201599
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.5272498945061016,
+      "val_dice@0.5": {
+        "surface_crack": 0.7930057315603599,
+        "delamination": 0.7675469967904631,
+        "pinhole": 0.8773006134969326,
+        "unclassified": 0.05396088718491988
+      },
+      "val_mean_dice@0.5": 0.6229535572581689,
+      "seconds": 84.69980072975159
+    },
+    {
+      "epoch": 26,
+      "train_loss": 0.525133297791919,
+      "val_dice@0.5": {
+        "surface_crack": 0.7965712464300628,
+        "delamination": 0.7795456260179922,
+        "pinhole": 0.9053036933309995,
+        "unclassified": 0.05650706940874036
+      },
+      "val_mean_dice@0.5": 0.6344819087969488,
+      "seconds": 75.5991780757904
+    },
+    {
+      "epoch": 27,
+      "train_loss": 0.5082895490515587,
+      "val_dice@0.5": {
+        "surface_crack": 0.793638394536642,
+        "delamination": 0.7811228486646884,
+        "pinhole": 0.8653242194716424,
+        "unclassified": 0.06144994453813341
+      },
+      "val_mean_dice@0.5": 0.6253838518027766,
+      "seconds": 79.3754677772522
+    },
+    {
+      "epoch": 28,
+      "train_loss": 0.5130566815817957,
+      "val_dice@0.5": {
+        "surface_crack": 0.795848769728248,
+        "delamination": 0.7753904156094772,
+        "pinhole": 0.8882950293960449,
+        "unclassified": 0.057274043499476054
+      },
+      "val_mean_dice@0.5": 0.6292020645583115,
+      "seconds": 89.325275182724
+    },
+    {
+      "epoch": 29,
+      "train_loss": 0.5081906071147203,
+      "val_dice@0.5": {
+        "surface_crack": 0.7891758585606004,
+        "delamination": 0.8039271225466905,
+        "pinhole": 0.874106652006597,
+        "unclassified": 0.06302733863219495
+      },
+      "val_mean_dice@0.5": 0.6325592429365208,
+      "seconds": 101.11099076271057
+    },
+    {
+      "epoch": 30,
+      "train_loss": 0.5055281708804941,
+      "val_dice@0.5": {
+        "surface_crack": 0.7894250081741324,
+        "delamination": 0.8406024458948137,
+        "pinhole": 0.8946152479118535,
+        "unclassified": 0.06860904075113736
+      },
+      "val_mean_dice@0.5": 0.6483129356829843,
+      "seconds": 127.46775507926941
+    },
+    {
+      "epoch": 31,
+      "train_loss": 0.5018797364148563,
+      "val_dice@0.5": {
+        "surface_crack": 0.7936629571771163,
+        "delamination": 0.782261520566036,
+        "pinhole": 0.8843783979702791,
+        "unclassified": 0.05717845006347029
+      },
+      "val_mean_dice@0.5": 0.6293703314442254,
+      "seconds": 116.09347248077393
+    },
+    {
+      "epoch": 32,
+      "train_loss": 0.5073693206324151,
+      "val_dice@0.5": {
+        "surface_crack": 0.8023703042326296,
+        "delamination": 0.7831209989797117,
+        "pinhole": 0.8985610232723397,
+        "unclassified": 0.05934564193513305
+      },
+      "val_mean_dice@0.5": 0.6358494921049535,
+      "seconds": 123.64131951332092
+    },
+    {
+      "epoch": 33,
+      "train_loss": 0.49353346463779585,
+      "val_dice@0.5": {
+        "surface_crack": 0.7876899293196843,
+        "delamination": 0.7777429937603191,
+        "pinhole": 0.9066573961411437,
+        "unclassified": 0.0557475936153887
+      },
+      "val_mean_dice@0.5": 0.6319594782091339,
+      "seconds": 146.33785343170166
+    },
+    {
+      "epoch": 34,
+      "train_loss": 0.4868939647699235,
+      "val_dice@0.5": {
+        "surface_crack": 0.7988121940590989,
+        "delamination": 0.7856884808219299,
+        "pinhole": 0.8945102260495156,
+        "unclassified": 0.058563811392679924
+      },
+      "val_mean_dice@0.5": 0.634393678080806,
+      "seconds": 165.5927290916443
+    },
+    {
+      "epoch": 35,
+      "train_loss": 0.5006910272588396,
+      "val_dice@0.5": {
+        "surface_crack": 0.7994524198600554,
+        "delamination": 0.7865233181115386,
+        "pinhole": 0.9017685168972159,
+        "unclassified": 0.060887583009222306
+      },
+      "val_mean_dice@0.5": 0.637157959469508,
+      "seconds": 38.33816695213318
+    },
+    {
+      "epoch": 36,
+      "train_loss": 0.5026841756597373,
+      "val_dice@0.5": {
+        "surface_crack": 0.8002073188561373,
+        "delamination": 0.7903396132650616,
+        "pinhole": 0.8996992747213869,
+        "unclassified": 0.059108983202142334
+      },
+      "val_mean_dice@0.5": 0.637338797511182,
+      "seconds": 46.07837438583374
+    },
+    {
+      "epoch": 37,
+      "train_loss": 0.4942785583214803,
+      "val_dice@0.5": {
+        "surface_crack": 0.7934143425894612,
+        "delamination": 0.7794420898377515,
+        "pinhole": 0.898932384341637,
+        "unclassified": 0.059286293592862936
+      },
+      "val_mean_dice@0.5": 0.6327687775904283,
+      "seconds": 50.77401661872864
+    },
+    {
+      "epoch": 38,
+      "train_loss": 0.4828029674361008,
+      "val_dice@0.5": {
+        "surface_crack": 0.7943014253183773,
+        "delamination": 0.7899112017485299,
+        "pinhole": 0.8955916473317865,
+        "unclassified": 0.06252696266166592
+      },
+      "val_mean_dice@0.5": 0.6355828092650899,
+      "seconds": 50.77894902229309
+    },
+    {
+      "epoch": 39,
+      "train_loss": 0.4855216742718513,
+      "val_dice@0.5": {
+        "surface_crack": 0.7977900742825493,
+        "delamination": 0.7823454902817208,
+        "pinhole": 0.9036102348405187,
+        "unclassified": 0.0586283185840708
+      },
+      "val_mean_dice@0.5": 0.6355935294972149,
+      "seconds": 49.879765033721924
+    },
+    {
+      "epoch": 40,
+      "train_loss": 0.4916417827639358,
+      "val_dice@0.5": {
+        "surface_crack": 0.7968682620384913,
+        "delamination": 0.7822224567699263,
+        "pinhole": 0.8975817923186344,
+        "unclassified": 0.05928792695519257
+      },
+      "val_mean_dice@0.5": 0.6339901095205611,
+      "seconds": 51.29628086090088
+    }
+  ]
+}

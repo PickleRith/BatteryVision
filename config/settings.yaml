@@ -1,0 +1,15 @@
+# Paths are relative to the repo root unless absolute.
+# Override data_root with the BATTERYVISION_DATA_ROOT environment variable.
+data_root: data/raw/CoatingVision
+processed_dir: data/processed
+models_dir: models
+artifacts_dir: artifacts
+seed: 42
+
+split:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+  # Frames from the same run whose frame index falls in the same window of this
+  # many frame numbers are kept together in one split (leakage control).
+  frame_block_size: 50

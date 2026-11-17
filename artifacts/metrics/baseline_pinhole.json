@@ -1,0 +1,61 @@
+{
+  "method": "white top-hat + robust threshold + area/circularity filter",
+  "target_class": "pinhole",
+  "params": {
+    "blur_ksize": 3,
+    "tophat_ksize": 15,
+    "k_sigma": 30.0,
+    "min_abs_response": 40.0,
+    "min_area": 4,
+    "max_area": 400,
+    "min_circularity": 0.7
+  },
+  "tuned_on": "all train+val images (natural pinhole prevalence); object-level F1",
+  "tuning_set": {
+    "object_recall": 0.6694736842105263,
+    "object_precision": 0.38545454545454544,
+    "gt_objects": 475,
+    "pred_objects": 825,
+    "false_candidates_per_image": 0.2704,
+    "pixel": {
+      "precision": 0.5646398841838581,
+      "recall": 0.3408341161820287,
+      "f1": 0.42507799408743513
+    },
+    "image_level": {
+      "tp": 309,
+      "fp": 147,
+      "fn": 131,
+      "tn": 1288,
+      "precision": 0.6776315789473685,
+      "recall": 0.7022727272727273,
+      "f1": 0.6897321428571429
+    },
+    "n_images": 1875,
+    "object_f1": 0.48923076923076925
+  },
+  "test": {
+    "object_recall": 0.6404494382022472,
+    "object_precision": 0.3202247191011236,
+    "gt_objects": 89,
+    "pred_objects": 178,
+    "false_candidates_per_image": 0.34375,
+    "pixel": {
+      "precision": 0.4006216260428595,
+      "recall": 0.39202817352329117,
+      "f1": 0.39627831715210354
+    },
+    "image_level": {
+      "tp": 55,
+      "fp": 42,
+      "fn": 24,
+      "tn": 231,
+      "precision": 0.5670103092783505,
+      "recall": 0.6962025316455697,
+      "f1": 0.625
+    },
+    "n_images": 352,
+    "object_f1": 0.4269662921348315
+  },
+  "matching": "component matched if within 3 px (dilation tolerance)"
+}

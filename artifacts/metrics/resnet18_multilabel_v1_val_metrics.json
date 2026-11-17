@@ -1,0 +1,63 @@
+{
+  "model_name": "resnet18_multilabel_v1",
+  "model_kind": "classification",
+  "split": "val",
+  "n_images": 329,
+  "manifest_sha256_16": "e5faa812020fe658",
+  "thresholds_from": "validation split",
+  "image_level": {
+    "surface_crack": {
+      "precision": 0.9666666666666667,
+      "recall": 1.0,
+      "f1": 0.9830508474576272,
+      "support": 290,
+      "tp": 290,
+      "fp": 10,
+      "fn": 0,
+      "tn": 29,
+      "average_precision": 0.9928442702696194
+    },
+    "delamination": {
+      "precision": 0.972972972972973,
+      "recall": 1.0,
+      "f1": 0.9863013698630136,
+      "support": 36,
+      "tp": 36,
+      "fp": 1,
+      "fn": 0,
+      "tn": 292,
+      "average_precision": 0.9992492492492493
+    },
+    "pinhole": {
+      "precision": 0.9176470588235294,
+      "recall": 0.975,
+      "f1": 0.9454545454545454,
+      "support": 80,
+      "tp": 78,
+      "fp": 7,
+      "fn": 2,
+      "tn": 242,
+      "average_precision": 0.9838829721789206
+    },
+    "unclassified": {
+      "precision": 0.9166666666666666,
+      "recall": 0.9166666666666666,
+      "f1": 0.9166666666666666,
+      "support": 12,
+      "tp": 11,
+      "fp": 1,
+      "fn": 1,
+      "tn": 316,
+      "average_precision": 0.9512205387205387
+    }
+  },
+  "image_level_score": "sigmoid probability",
+  "review_rate": 0.08206686930091185,
+  "review_band": 0.15,
+  "errors_flagged_for_review": {
+    "images_with_any_error": 22,
+    "of_which_flagged": 8,
+    "share_flagged": 0.36363636363636365
+  },
+  "image_level_macro_f1": 0.9578683573604632
+}

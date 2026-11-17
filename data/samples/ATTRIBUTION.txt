@@ -1,0 +1,8 @@
+Sample images and masks in this folder are from:
+
+  Sampath et al., "CoatingVision: A Defect Dataset for Coating Manufacturing",
+  Scientific Data (2026). https://doi.org/10.1038/s41597-025-06419-1
+  Dataset: https://doi.org/10.6084/m9.figshare.29260121.v1
+
+Licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Files are copied unmodified; only a subset of the test split is included.

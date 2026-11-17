@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "model_name": "resnet18_multilabel_v1",
+    "architecture": "torchvision ResNet18 (ImageNet-pretrained), 4-logit head",
+    "input_size_wh": [
+      320,
+      240
+    ],
+    "loss": "BCEWithLogits, pos_weight (train split, capped at 10) = {'surface_crack': 1.0, 'delamination': 10.0, 'pinhole': 3.29, 'unclassified': 10.0}",
+    "optimizer": "AdamW lr=0.0003 wd=1e-4, cosine",
+    "epochs": 12,
+    "batch_size": 16,
+    "augmentation": "h/v flips, brightness/contrast jitter",
+    "seed": 42,
+    "device": "cuda",
+    "selected_epoch": 12,
+    "selection_metric": "macro val average precision",
+    "thresholds": {
+      "surface_crack": 0.25,
+      "delamination": 0.55,
+      "pinhole": 0.55,
+      "unclassified": 0.35
+    },
+    "threshold_selection": "validation split only, max F1 per class",
+    "manifest_sha256_16": "e5faa812020fe658",
+    "environment": {
+      "python": "3.11.4",
+      "torch": "2.14.1+cu130",
+      "torchvision": "0.29.1+cu130",
+      "opencv": "5.0.0",
+      "numpy": "2.4.6",
+      "platform": "Windows-10-10.0.26200-SP0"
+    }
+  },
+  "log": [
+    {
+      "epoch": 1,
+      "train_loss": 0.45839776798485166,
+      "val_ap": {
+        "surface_crack": 0.9957153527389552,
+        "delamination": 0.6920202944694642,
+        "pinhole": 0.9471278233427309,
+        "unclassified": 0.19995121499281088
+      },
+      "val_macro_ap": 0.7087036713859902,
+      "seconds": 19.088258981704712
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.26026388682800927,
+      "val_ap": {
+        "surface_crack": 0.9970863198377816,
+        "delamination": 0.9962979921313255,
+        "pinhole": 0.9851976196484508,
+        "unclassified": 0.4987575890119108
+      },
+      "val_macro_ap": 0.8693348801573672,
+      "seconds": 27.324281692504883
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.23250908821936875,
+      "val_ap": {
+        "surface_crack": 0.9972135677140301,
+        "delamination": 0.9927507612825645,
+        "pinhole": 0.9851553317891824,
+        "unclassified": 0.7764131701631701
+      },
+      "val_macro_ap": 0.9378832077372367,
+      "seconds": 47.43685984611511
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.1794477731259335,
+      "val_ap": {
+        "surface_crack": 0.9938238039204145,
+        "delamination": 0.9964506172839507,
+        "pinhole": 0.9789884731813068,
+        "unclassified": 0.5641023145109043
+      },
+      "val_macro_ap": 0.8833413022241441,
+      "seconds": 44.499029874801636
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.16253455289739532,
+      "val_ap": {
+        "surface_crack": 0.9979403234491745,
+        "delamination": 0.9930412957067369,
+        "pinhole": 0.9800969785013476,
+        "unclassified": 0.890476598564834
+      },
+      "val_macro_ap": 0.9653887990555232,
+      "seconds": 41.15097904205322
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.13305547631997494,
+      "val_ap": {
+        "surface_crack": 0.997577202690061,
+        "delamination": 1.0,
+        "pinhole": 0.981774165930123,
+        "unclassified": 0.8803633866133868
+      },
+      "val_macro_ap": 0.9649286888083927,
+      "seconds": 50.28367567062378
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.10564028983514029,
+      "val_ap": {
+        "surface_crack": 0.9871509355529129,
+        "delamination": 0.9840271427433657,
+        "pinhole": 0.9833215339843129,
+        "unclassified": 0.8781826768239812
+      },
+      "val_macro_ap": 0.9581705722761431,
+      "seconds": 56.303889989852905
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.09288543686367098,
+      "val_ap": {
+        "surface_crack": 0.9867301896008756,
+        "delamination": 1.0,
+        "pinhole": 0.9838987753254744,
+        "unclassified": 0.9035748429130782
+      },
+      "val_macro_ap": 0.9685509519598571,
+      "seconds": 51.833441734313965
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.07770554523283729,
+      "val_ap": {
+        "surface_crack": 0.9919463138869741,
+        "delamination": 0.9985380116959064,
+        "pinhole": 0.9805292567738176,
+        "unclassified": 0.9140694953194953
+      },
+      "val_macro_ap": 0.9712707694190483,
+      "seconds": 51.82220768928528
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.06656646892852493,
+      "val_ap": {
+        "surface_crack": 0.9924376030473414,
+        "delamination": 1.0,
+        "pinhole": 0.9853291052134767,
+        "unclassified": 0.9243700199582553
+      },
+      "val_macro_ap": 0.9755341820547683,
+      "seconds": 52.71948456764221
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.058094777542745925,
+      "val_ap": {
+        "surface_crack": 0.9921425578848827,
+        "delamination": 1.0,
+        "pinhole": 0.9855915057130095,
+        "unclassified": 0.9414724164724165
+      },
+      "val_macro_ap": 0.9798016200175772,
+      "seconds": 59.08362579345703
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.06088983629472351,
+      "val_ap": {
+        "surface_crack": 0.9928280070410148,
+        "delamination": 0.9992492492492493,
+        "pinhole": 0.9838829721789206,
+        "unclassified": 0.9512205387205387
+      },
+      "val_macro_ap": 0.9817951917974308,
+      "seconds": 52.94445204734802
+    }
+  ]
+}
